@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "979786692741",
+    "project_id": "hs-chat-89935",
+    "storage_bucket": "hs-chat-89935.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:979786692741:android:1789b2ad3cf4c2b32cd1ec",
+        "android_client_info": {
+          "package_name": "com.sabre.hschat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "979786692741-ak3ebqu3tioqanq5aput76nbmgldrid4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpag15LdMC6KbPYQ7oRaadiQ2RGR_pGWU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "979786692741-ak3ebqu3tioqanq5aput76nbmgldrid4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

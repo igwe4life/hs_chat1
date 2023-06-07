@@ -1,4 +1,4 @@
-package com.example.hs_chat
+package com.sabre.hschat
 
 import io.flutter.embedding.android.FlutterActivity
 
