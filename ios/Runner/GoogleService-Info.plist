@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>979786692741-i2j96mqaiglt0ovtgcpc3sasse352kde.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.979786692741-i2j96mqaiglt0ovtgcpc3sasse352kde</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDVd2GB6asOjSAEIwp5PEIQc-BdHf7a3eg</string>
+	<key>GCM_SENDER_ID</key>
+	<string>979786692741</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.sabre.hschat</string>
+	<key>PROJECT_ID</key>
+	<string>hs-chat-89935</string>
+	<key>STORAGE_BUCKET</key>
+	<string>hs-chat-89935.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:979786692741:ios:c22acad1603845552cd1ec</string>
+</dict>
+</plist>
