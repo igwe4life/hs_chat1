@@ -1,11 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:hs_chat/home.dart';
+import 'package:hs_chat/webview_screen.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp();
@@ -15,6 +15,8 @@ AndroidNotificationChannel? channel;
 
 FlutterLocalNotificationsPlugin? flutterLocalNotificationsPlugin;
 late FirebaseMessaging messaging;
+
+final GlobalKey<NavigatorState> navigatorKey = new GlobalKey<NavigatorState>();
 
 void notificationTapBackground(NotificationResponse notificationResponse) {
   print('notification(${notificationResponse.id}) action tapped: '
@@ -47,15 +49,15 @@ Future<void> main() async {
   print(fcmToken);
 
   //If subscribe based on topic then use this
-  await messaging.subscribeToTopic('hschat_notification');
+  await messaging.subscribeToTopic('hschat_notification99');
 
   // Set the background messaging handler early on, as a named top-level function
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
   if (!kIsWeb) {
     channel = const AndroidNotificationChannel(
-        'hschat_notification', // id
-        'hschat_notification_title', // title
+        'flutter_notification', // id
+        'flutter_notification_title', // title
         importance: Importance.high,
         enableLights: true,
         enableVibration: true,
@@ -79,39 +81,22 @@ Future<void> main() async {
       sound: true,
     );
   }
-
-  runApp(
-    const MaterialApp(
-      home: WebViewApp(),
-    ),
-  );
+  runApp(MyApp());
 }
 
-class WebViewApp extends StatefulWidget {
-  const WebViewApp({Key? key}) : super(key: key);
-
-  @override
-  State<WebViewApp> createState() => _WebViewAppState();
-}
-
-class _WebViewAppState extends State<WebViewApp> {
-  late final WebViewController controller;
-
-  final loginUrl = 'https://hschat.pro/app';
-  final dashboardUrl = 'https://hschat.pro/dashboard';
-
-  @override
-  void initState() {
-    controller = WebViewController()
-      ..setJavaScriptMode(JavaScriptMode.unrestricted)
-      ..loadRequest(Uri.parse(loginUrl));
-    super.initState();
-  }
-
+class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: WebViewWidget(controller: controller),
+    return MaterialApp(
+      title: 'Flutter Notification',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      navigatorKey: navigatorKey,
+      home: WebViewScreen(
+        url: 'https://hschat.pro/app/broadcast',
+      ),
     );
   }
 }
