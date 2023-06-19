@@ -94,7 +94,9 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       navigatorKey: navigatorKey,
-      home: HomePage(),
+      home: const WebViewScreen(
+        url: 'https://hschat.pro/app/broadcast',
+      ),
     );
   }
 }

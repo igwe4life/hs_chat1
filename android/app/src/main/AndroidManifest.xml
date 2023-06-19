@@ -1,15 +1,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
-	<uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-	
+    
     <application
         android:label="HS CHAT"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
-		
+        
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -45,9 +45,9 @@
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/colorAccent" />
-        <!-- <meta-data
+        <meta-data
             android:name="com.google.firebase.messaging.default_notification_channel_id"
-            android:value="fcm_default_channel" /> -->
+            android:value="hschat_notification" />
         <meta-data
             android:name="com.google.firebase.messaging.fcm_sender_id"
             android:value="979786692741" />
@@ -58,10 +58,6 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-
-        <meta-data
-            android:name="com.google.firebase.messaging.default_notification_channel_id"
-            android:value="hschat_notification" />
         <meta-data
             android:name="com.google.firebase.messaging.server_key"
             android:value="AAAA5B_WeIU:APA91bG4Xsqanq80NXrBoYDT5m30bhkph2cEbSWfgLaVDvegHdLLHhiyv-37omB47pKmK6O_6uHhYk-T7PNwqKaB34HwstASsx8x6TGWn5HMx8cUhRZCvKhOXezZQ3bpHzfHrYNoMjF0" />

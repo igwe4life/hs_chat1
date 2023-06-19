@@ -90,14 +90,19 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Notification',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Home"),
       ),
-      navigatorKey: navigatorKey,
-      home: WebViewScreen(
-        url: 'https://hschat.pro/app/broadcast',
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              'You will receive notification',
+            ),
+          ],
+        ),
       ),
     );
   }
