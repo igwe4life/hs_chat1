@@ -89,7 +89,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Notification',
+      title: 'Hs Chat',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),

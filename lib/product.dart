@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hs_chat/webview_screen.dart';
 
 class ProductPage extends StatefulWidget {
   final String? message;
@@ -11,26 +12,14 @@ class ProductPage extends StatefulWidget {
 
 class _ProductPageState extends State<ProductPage> {
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final url = widget.message;
+
     return Scaffold(
       appBar: AppBar(
-        title: Text("Product"),
+        title: Text("Hs Chat"),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'Notification Message For Product: \n ${widget.message}',
-            ),
-          ],
-        ),
-      ),
+      body: url != null ? WebViewScreen(url: url) : Container(),
     );
   }
 }

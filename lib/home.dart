@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:convert';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -20,16 +19,18 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  late final WebViewController _controller;
+
   @override
   void initState() {
     super.initState();
-
+    _controller = WebViewController();
     setupInteractedMessage();
 
     FirebaseMessaging.instance
         .getInitialMessage()
         .then((RemoteMessage? message) async {
-      RemoteNotification? notification = message?.notification!;
+      RemoteNotification? notification = message?.notification;
 
       print(notification != null ? notification.title : '');
     });
@@ -42,24 +43,25 @@ class _HomePageState extends State<HomePage> {
         String action = jsonEncode(message.data);
 
         flutterLocalNotificationsPlugin!.show(
-            notification.hashCode,
-            notification.title,
-            notification.body,
-            NotificationDetails(
-              android: AndroidNotificationDetails(
-                channel!.id,
-                channel!.name,
-                priority: Priority.high,
-                importance: Importance.max,
-                setAsGroupSummary: true,
-                styleInformation: DefaultStyleInformation(true, true),
-                largeIcon: DrawableResourceAndroidBitmap('@mipmap/ic_launcher'),
-                channelShowBadge: true,
-                autoCancel: true,
-                icon: '@drawable/ic_notifications_icon',
-              ),
+          notification.hashCode,
+          notification.title,
+          notification.body,
+          NotificationDetails(
+            android: AndroidNotificationDetails(
+              channel!.id,
+              channel!.name,
+              priority: Priority.high,
+              importance: Importance.max,
+              setAsGroupSummary: true,
+              styleInformation: DefaultStyleInformation(true, true),
+              largeIcon: DrawableResourceAndroidBitmap('@mipmap/ic_launcher'),
+              channelShowBadge: true,
+              autoCancel: true,
+              icon: '@drawable/ic_notifications_icon',
             ),
-            payload: action);
+          ),
+          payload: action,
+        );
       }
       print('A new event was published!');
     });
@@ -81,10 +83,11 @@ class _HomePageState extends State<HomePage> {
 
   void _handleMessage(Map<String, dynamic> data) {
     if (data['redirect'] == "product") {
+      final url = data['url'];
       Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => ProductPage(message: data['message'])));
+        context,
+        MaterialPageRoute(builder: (context) => ProductPage(message: url)),
+      );
     }
   }
 
@@ -92,7 +95,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Home"),
+        title: Text("Hs Chat"),
       ),
       body: Center(
         child: Column(
