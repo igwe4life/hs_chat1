@@ -56,8 +56,8 @@ Future<void> main() async {
 
   if (!kIsWeb) {
     channel = const AndroidNotificationChannel(
-        'flutter_notification', // id
-        'flutter_notification_title', // title
+        'hschat_notification', // id
+        'hschat_notification_title', // title
         importance: Importance.high,
         enableLights: true,
         enableVibration: true,
@@ -94,9 +94,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       navigatorKey: navigatorKey,
-      home: WebViewScreen(
-        url: 'https://hschat.pro/app/broadcast',
-      ),
+      home: HomePage(),
     );
   }
 }
