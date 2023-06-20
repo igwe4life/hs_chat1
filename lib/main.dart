@@ -95,7 +95,7 @@ class MyApp extends StatelessWidget {
       ),
       navigatorKey: navigatorKey,
       home: const WebViewScreen(
-        url: 'https://hschat.pro/app/broadcast',
+        url: 'https://hschat.pro/app/',
       ),
     );
   }
