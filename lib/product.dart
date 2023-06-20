@@ -17,7 +17,7 @@ class _ProductPageState extends State<ProductPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Hs Chat"),
+        title: const Text("HS Messenger"),
       ),
       body: url != null ? WebViewScreen(url: url) : Container(),
     );

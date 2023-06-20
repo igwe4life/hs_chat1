@@ -6,6 +6,7 @@ import 'package:webview_flutter/webview_flutter.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:firebase_app_installations/firebase_app_installations.dart';
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp();
@@ -89,13 +90,26 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Hs Chat',
+      title: 'HS Messenger',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       navigatorKey: navigatorKey,
-      home: const WebViewScreen(
-        url: 'https://hschat.pro/app/broadcast',
+      home: FutureBuilder<String>(
+        future: FirebaseInstallations.instance.getId(),
+        //String token = await FirebaseInstallations.instance.getToken();
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            final firebaseIdentifier = snapshot.data!;
+            final url =
+                'https://hschat.pro/app/index.php?uid=$firebaseIdentifier';
+            return WebViewScreen(url: url);
+          } else if (snapshot.hasError) {
+            return Text('Error: ${snapshot.error}');
+          } else {
+            return CircularProgressIndicator();
+          }
+        },
       ),
     );
   }

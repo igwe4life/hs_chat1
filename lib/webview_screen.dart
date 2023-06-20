@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import 'package:firebase_app_installations/firebase_app_installations.dart';
 
 class WebViewScreen extends StatefulWidget {
   final String url;

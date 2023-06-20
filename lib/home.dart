@@ -95,7 +95,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Hs Chat"),
+        title: const Text("HS Messenger"),
       ),
       body: Center(
         child: Column(
