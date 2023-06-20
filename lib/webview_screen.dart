@@ -30,8 +30,9 @@ class _WebViewScreenState extends State<WebViewScreen> {
   } */
 
   @override
-  void initState() {
+  Future<void> initState() async {
     final dashboardUrl = widget.url;
+    String id = await FirebaseInstallations.instance.getId();
     controller = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..loadRequest(Uri.parse('https://hschat.pro/app/broadcast'));
