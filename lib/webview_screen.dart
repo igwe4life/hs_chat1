@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
-import 'package:firebase_app_installations/firebase_app_installations.dart';
 
 class WebViewScreen extends StatefulWidget {
   final String url;
@@ -30,9 +29,8 @@ class _WebViewScreenState extends State<WebViewScreen> {
   } */
 
   @override
-  Future<void> initState() async {
+  void initState() {
     final dashboardUrl = widget.url;
-    String id = await FirebaseInstallations.instance.getId();
     controller = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..loadRequest(Uri.parse('https://hschat.pro/app/broadcast'));
