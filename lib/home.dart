@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -8,6 +9,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:hs_chat/main.dart';
 import 'package:hs_chat/product.dart';
 import 'package:hs_chat/webview_screen.dart';
+import 'package:uuid/uuid.dart';
 
 class HomePage extends StatefulWidget {
   final String? message;
@@ -19,12 +21,23 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late final WebViewController _controller;
+  //late final WebViewController _controller;
+  late final WebViewController controller;
+  late SharedPreferences _prefs;
+  late String _uniqueId;
 
   @override
-  void initState() {
+  Future<void> initState() async {
+    // _prefs = await SharedPreferences.getInstance();
+    // _uniqueId = _prefs.getString('uniqueId')!;
+    // //final uuid = Uuid().v4();
+    // final url = 'https://hschat.pro/app/index.php?uid=$_uniqueId';
+
+    // controller = WebViewController()
+    //   ..setJavaScriptMode(JavaScriptMode.unrestricted)
+    //   ..loadRequest(Uri.parse(url));
     super.initState();
-    _controller = WebViewController();
+    //_controller = WebViewController();
     setupInteractedMessage();
 
     FirebaseMessaging.instance
@@ -94,19 +107,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("HS Messenger"),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You will receive notification',
-            ),
-          ],
-        ),
-      ),
+      body: WebViewWidget(controller: controller),
     );
   }
 }
